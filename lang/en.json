@@ -18,7 +18,7 @@
         "hint": "(Requires Items With Rollable Tables DnD5e Module)"
       },
       "skip-attack-roll": { 
-        "name": "Skips attack roll dialog and dice roll",
+        "name": "Skips attack dice roll",
         "hint": "Compatible with the fast roll settings above."
       },
       "faster-local": {

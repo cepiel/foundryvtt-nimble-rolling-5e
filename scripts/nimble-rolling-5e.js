@@ -189,33 +189,9 @@ class NimbleRolling5e {
    * @param {D20RollConfiguration} config - roll dialog config
    */
   static skipD20Roll(config) {
-    // do nothing if this roll is already configured for advantage or disadvantage
-    if (config.advantage || config.disadvantage) {
-      return;
-    }
-
     if (this._getSkipAttackRoll()) {
+      return false;
     }
-
-    // if (this._getShouldBeFasterWithOverride()) {
-    //   const newFFValue = this._determineShouldFFD20(config);
-    //   NimbleRolling5e.log(false, "skipping?", config, newFFValue);
-
-    //   config.fastForward = newFFValue;
-
-    //   if (config.event) {
-    //     NimbleRolling5e.log(
-    //       false,
-    //       "Mutating Event shiftKey from",
-    //       config.event.shiftKey,
-    //       "to",
-    //       newFFValue
-    //     );
-    //     // set the `event` shiftKey to be the same as our new fast forward value
-    //     config.event.shiftKey = newFFValue;
-    //   }
-    // }
-
     return;
   }
 
@@ -322,6 +298,8 @@ class NimbleRolling5eItem {
     "dnd5e.preRollAttack",
     "dnd5e.preRollToolCheck",
   ];
+
+  static D20_ROLL_ATTACK_HOOKS = ["dnd5e.preRollAttack"];
 
   static DAMAGE_ROLL_DIALOG_HOOKS = ["dnd5e.preRollDamage"];
 
@@ -481,17 +459,15 @@ class NimbleRolling5eItem {
 
     Hooks.on("dnd5e.useItem", this.handleUseItem);
 
-    this.D20_ROLL_DIALOG_HOOKS.forEach((hookName) => {
-      Hooks.on(
-        hookName,
-        (document, config) => NimbleRolling5e.skipD20RollDialog(config)
-        // NimbleRolling5e.skipD20Roll(config)
+    this.D20_ROLL_ATTACK_HOOKS.forEach((hookName) => {
+      Hooks.on(hookName, (document, config) =>
+        NimbleRolling5e.skipD20Roll(config)
       );
     });
 
     this.D20_ROLL_DIALOG_HOOKS.forEach((hookName) => {
       Hooks.on(hookName, (document, config) =>
-        NimbleRolling5e.skipD20Roll(config)
+        NimbleRolling5e.skipD20RollDialog(config)
       );
     });
 

@@ -1,4 +1,6 @@
-# Faster Rolling by Default DnD5e
+# Nimble ROlling for DnD5e
+
+# TODO Needs UPDATES
 
 ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-faster-rolling-by-default-5e%2Fmain%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange)
 ![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-faster-rolling-by-default-5e%2Freleases%2Flatest)
